@@ -7,12 +7,12 @@ def create_matrix(N):
         print(row)
 
 def addingRandomValuesToMatrix():
-    row, col = 0,0
-    for row in M:
-        for col in M:
-            M[row][col] = random.randint(0,10)
-        row += 1 ; col += 1
-        print(row)
+    for i in range(len(M)):
+        for j in range(len(M[i])):
+          M[i][j] = random.randint(0,10)
+    
+        
+        
     
 
 create_matrix(6)
