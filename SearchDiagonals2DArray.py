@@ -1,7 +1,9 @@
 import random 
 #randint()
-def create_matrix(N):
+def create_matrix():
+    global N
     global M
+    N = int(input("Enter value of N: "))
     M = [[0] * N for i in range(N)]
 
 def addingRandomValuesToMatrix():
@@ -11,12 +13,7 @@ def addingRandomValuesToMatrix():
     for row in M:
         print(row)
 
-def declaringMainDiagonal(N):
-    #need to initilize while loop and array
-    #start at [0][0] and append to new array
-    #then go [1][1], [2][2], etc...
-    #until [N-1][N-1] is reached
-    
+def declaringMainDiagonal():
     end = False
     main_diag = []
     r, c = 0, 0
@@ -28,12 +25,99 @@ def declaringMainDiagonal(N):
             r += 1 ; c += 1
     print(main_diag)
 
-    
+def decalringSubDiagonal():
+    global sub_diag
+    end = False
+    sub_diag = []
+    r, c = 1, 0
+    while not end:
+        if r > (N-1):
+            end = True
+        else:
+            sub_diag.append(M[r][c])
+            r += 1 ; c += 1
+    print(sub_diag)
+
+def decalringSupDiagonal():
+    global sub_diag
+    end = False
+    sup_diag = []
+    r, c = 0, 1
+    while not end:
+        if r > (N-2):
+            end = True
+        else:
+            sup_diag.append(M[r][c])
+            r += 1 ; c += 1
+    print(sup_diag)
         
-        
+def checkForZerosSup():
+    #need to check all the values above sup diagonal to see if all zeros
+    #start with [1][2] and check if [0][2] == 0, IF not, Reutrn False
+    end = False
+    is_zero = True
+    r, c = 1, 2
+    while not end:
+        if c > (N-1):
+            end = True
+        else:
+            if (M[r-1][c]) != 0:
+                is_zero = False
+                return False
+                break
+            else:
+                is_zero = True
+            r += 1 ; c += 1
+    if is_zero == True:
+        return True
+
+def checkForZerosSup():
+    #need to check all the values above sup diagonal to see if all zeros
+    #start with [1][2] and check if [0][2] == 0, IF not, Reutrn False
+    end = False
+    is_zero = True
+    r, c = 1, 2
+    while not end:
+        if c > (N-1):
+            end = True
+        else:
+            if (M[r-1][c]) != 0:
+                is_zero = False
+                return False
+                break
+            else:
+                is_zero = True
+            r += 1 ; c += 1
+    if is_zero == True:
+        return True
+
+"""""
+def checkForZerosSub():
+    end = False
+    is_zero = True
+    r, c = 1, 0
+    while not end:
+        if c > (N-1):
+            end = True
+        else:
+            if (M[r-1][c]) != 0:
+                is_zero = False
+                return False
+                break
+            else:
+                is_zero = True
+            r += 1 ; c += 1
+    if is_zero == True:
+        return True
+"""""
+
     
 
-create_matrix(6)
+create_matrix()
 addingRandomValuesToMatrix()
 print()
-declaringMainDiagonal(6)
+declaringMainDiagonal()
+decalringSubDiagonal()
+decalringSupDiagonal()
+print()
+print(checkForZerosSup())
