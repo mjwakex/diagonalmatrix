@@ -11,9 +11,23 @@ def addingRandomValuesToMatrix():
     for row in M:
         print(row)
 
-def declaringMainDiagonal():
-    diagonal = [M[i][1] for i in range(len(M))]
-    print(diagonal)
+def declaringMainDiagonal(N):
+    #need to initilize while loop and array
+    #start at [0][0] and append to new array
+    #then go [1][1], [2][2], etc...
+    #until [N-1][N-1] is reached
+    
+    end = False
+    main_diag = []
+    r, c = 0, 0
+    while not end:
+        if r > (N-1):
+            end = True
+        else:
+            main_diag.append(M[r][c])
+            r += 1 ; c += 1
+    print(main_diag)
+
     
         
         
@@ -22,4 +36,4 @@ def declaringMainDiagonal():
 create_matrix(6)
 addingRandomValuesToMatrix()
 print()
-declaringMainDiagonal()
+declaringMainDiagonal(6)
