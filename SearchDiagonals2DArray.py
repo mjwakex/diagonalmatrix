@@ -50,10 +50,10 @@ def decalringSupDiagonal():
             sup_diag.append(M[r][c])
             r += 1 ; c += 1
     print(sup_diag)
-        
+    
 def checkForZerosSup():
     #need to check all the values above sup diagonal to see if all zeros
-    #start with [1][2] and check if [0][2] == 0, IF not, Reutrn False
+    #Start with [r][c] and search [r-1][c] AND [r-2][c] -- > So IF r = 4 , search : FOR i in range (1,5) -- > [r-i][c]
     end = False
     is_zero = True
     r, c = 1, 2
@@ -61,38 +61,17 @@ def checkForZerosSup():
         if c > (N-1):
             end = True
         else:
-            if (M[r-1][c]) != 0:
-                is_zero = False
-                return False
-                break
-            else:
-                is_zero = True
+            for i in range(1,r+1):
+                print(M[r-i][c])
+                if M[r-i][c] != 0:
+                    is_zero = False
             r += 1 ; c += 1
-    if is_zero == True:
-        return True
+    return is_zero
 
-def checkForZerosSup():
-    #need to check all the values above sup diagonal to see if all zeros
-    #start with [1][2] and check if [0][2] == 0, IF not, Reutrn False
-    end = False
-    is_zero = True
-    r, c = 1, 2
-    while not end:
-        if c > (N-1):
-            end = True
-        else:
-            if (M[r-1][c]) != 0:
-                is_zero = False
-                return False
-                break
-            else:
-                is_zero = True
-            r += 1 ; c += 1
-    if is_zero == True:
-        return True
 
-"""""
 def checkForZerosSub():
+    #need to check all the values below sub diagonal to see if all zeros
+    #Start with [r][c] and search [r+1][c] AND [r+2][c], etc -- > So IF r = 4 , search : FOR i in range (1,N-r) -- > [r+i][c]
     end = False
     is_zero = True
     r, c = 1, 0
@@ -100,24 +79,21 @@ def checkForZerosSub():
         if c > (N-1):
             end = True
         else:
-            if (M[r-1][c]) != 0:
-                is_zero = False
-                return False
-                break
-            else:
-                is_zero = True
+            for i in range(1,N-r):
+                print(M[r+i][c])
+                if M[r+i][c] != 0:
+                    is_zero = False
             r += 1 ; c += 1
-    if is_zero == True:
-        return True
-"""""
+    return is_zero
 
-    
+
+
+               
+
+
 
 create_matrix()
 addingRandomValuesToMatrix()
 print()
-declaringMainDiagonal()
-decalringSubDiagonal()
-decalringSupDiagonal()
-print()
 print(checkForZerosSup())
+print(checkForZerosSub())
