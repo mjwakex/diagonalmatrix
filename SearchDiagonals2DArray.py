@@ -1,3 +1,5 @@
+#Author : github.com/mjwakex
+
 import random 
 #randint()
 def create_matrix():
@@ -24,7 +26,6 @@ def checkForZerosSup():
             end = True
         else:
             for i in range(1,r+1):
-                print(M[r-i][c])
                 if M[r-i][c] != 0:
                     is_zero = False
             r += 1 ; c += 1
@@ -41,7 +42,6 @@ def checkForZerosSub():
             end = True
         else:
             for i in range(1,N-r):
-                print(M[r+i][c])
                 if M[r+i][c] != 0:
                     is_zero = False
             r += 1 ; c += 1
@@ -50,11 +50,9 @@ def checkForZerosSub():
 def main():
     create_matrix()
     addingRandomValuesToMatrix()
-    if checkForZeroSup() and checkForZeroSub():
+    if checkForZerosSup() and checkForZerosSub():
         return True
     else:
         return False
-
-               
 
 print(main())
