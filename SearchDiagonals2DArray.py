@@ -1,7 +1,7 @@
 #Author : github.com/mjwakex
 
 import random 
-#randint()
+
 def create_matrix():
     global N
     global M
