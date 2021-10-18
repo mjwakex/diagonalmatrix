@@ -13,44 +13,6 @@ def addingRandomValuesToMatrix():
     for row in M:
         print(row)
 
-def declaringMainDiagonal():
-    end = False
-    main_diag = []
-    r, c = 0, 0
-    while not end:
-        if r > (N-1):
-            end = True
-        else:
-            main_diag.append(M[r][c])
-            r += 1 ; c += 1
-    print(main_diag)
-
-def decalringSubDiagonal():
-    global sub_diag
-    end = False
-    sub_diag = []
-    r, c = 1, 0
-    while not end:
-        if r > (N-1):
-            end = True
-        else:
-            sub_diag.append(M[r][c])
-            r += 1 ; c += 1
-    print(sub_diag)
-
-def decalringSupDiagonal():
-    global sub_diag
-    end = False
-    sup_diag = []
-    r, c = 0, 1
-    while not end:
-        if r > (N-2):
-            end = True
-        else:
-            sup_diag.append(M[r][c])
-            r += 1 ; c += 1
-    print(sup_diag)
-    
 def checkForZerosSup():
     #need to check all the values above sup diagonal to see if all zeros
     #Start with [r][c] and search [r-1][c] AND [r-2][c] -- > So IF r = 4 , search : FOR i in range (1,5) -- > [r-i][c]
@@ -67,7 +29,6 @@ def checkForZerosSup():
                     is_zero = False
             r += 1 ; c += 1
     return is_zero
-
 
 def checkForZerosSub():
     #need to check all the values below sub diagonal to see if all zeros
@@ -86,14 +47,14 @@ def checkForZerosSub():
             r += 1 ; c += 1
     return is_zero
 
-
+def main():
+    create_matrix()
+    addingRandomValuesToMatrix()
+    if checkForZeroSup() and checkForZeroSub():
+        return True
+    else:
+        return False
 
                
 
-
-
-create_matrix()
-addingRandomValuesToMatrix()
-print()
-print(checkForZerosSup())
-print(checkForZerosSub())
+print(main())
